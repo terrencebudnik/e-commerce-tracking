@@ -8,18 +8,7 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findAll({
-      include: [{ model: Product }],
-      // attributes: {
-      //   include: [
-      //     [
-      //       sequelize.literal(
-      //         '(SELECT * FROM product WHERE product.category_id = category.id)'
-      //       ),
-      //       'allProducts',
-      //     ],
-      //   ],
-      // },
-    });
+      include: [{ model: Product }]});
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
